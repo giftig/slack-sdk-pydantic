@@ -6,7 +6,7 @@
 
 Pydantic XML models for slack content to allow easily templating content for slack bots.
 
-See `tests/models/test_blocks.py for usage examples.
+See `tests/models/test_blocks.py` for usage examples.
 
 ## Developing
 
