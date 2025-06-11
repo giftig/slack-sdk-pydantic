@@ -5,3 +5,12 @@ test:
 fmt:
 	uv run ruff check --select I,F401 --fix
 	uv run ruff format
+
+dist:
+	uv build
+
+dist/clean:
+	rm -rf dist/
+
+dist/release:
+	uv publish
