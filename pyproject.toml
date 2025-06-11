@@ -1,6 +1,6 @@
 [project]
 name = "slack_sdk_pydantic"
-version = "0.1.1"
+version = "0.1.2"
 description = "Pydantic XML models for slack content to allow easily templating content"
 readme = "README.md"
 requires-python = ">=3.12"
