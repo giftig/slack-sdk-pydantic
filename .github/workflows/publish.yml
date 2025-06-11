@@ -3,7 +3,7 @@ on:
   release:
   workflow_dispatch:
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-24.04
     permissions:
       id-token: write
