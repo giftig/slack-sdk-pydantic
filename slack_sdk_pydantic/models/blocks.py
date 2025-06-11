@@ -1,3 +1,4 @@
+import re
 from abc import ABCMeta, abstractmethod
 
 from pydantic import ConfigDict
@@ -40,7 +41,15 @@ class PlainTextObject(Base, tag="text"):
 
     @property
     def sanitised(self) -> str:
-        text = self.text.replace(r"\n", "\n")
+        # Squash all whitespace to avoid xml indentation interfering; nbsp can be used if desired
+        text = re.sub(r"\s+", " ", self.text)
+        # Allow specifying explicit line breaks with \n
+        text = text.replace(r"\n", "\n")
+        # Also blat whitespace occurring after a line break
+        text = text.replace("\n ", "\n")
+        # Respect &nbsp; and treat as a normal space
+        text = text.replace("\xa0", "")
+
         if len(text) >= 2000:
             text = text[:1999] + "…"
 

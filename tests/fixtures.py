@@ -10,7 +10,9 @@ content1 = m.Message.model_construct(
             id="section1",
             fields=[
                 m.PlainTextObject.model_construct(text="Test"),
-                m.PlainTextObject.model_construct(text="Test\\ntest\\ntest"),
+                m.PlainTextObject.model_construct(
+                    text="Test\\n\n        test\\n\n        test\xa0\xa0\xa0test"
+                ),
             ],
         ),
         m.DividerBlock.model_construct(),
@@ -19,7 +21,7 @@ content1 = m.Message.model_construct(
 
 content1_slack = [
     s.HeaderBlock(text="Test"),
-    s.SectionBlock(fields=["Test", "Test\ntest\ntest"], block_id="section1"),
+    s.SectionBlock(fields=["Test", "Test\ntest\ntest test"], block_id="section1"),
     s.DividerBlock(),
 ]
 
